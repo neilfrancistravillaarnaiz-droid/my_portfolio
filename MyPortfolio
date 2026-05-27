@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Neil Francis Arnaiz | polished portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #F9FAFE 0%, #EDF2F9 100%);
+            color: #1A2C3E;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* refined palette: calm, professional, high contrast */
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1E40AF;
+            --primary-soft: #DBEAFE;
+            --accent: #0F2B3D;
+            --surface: #FFFFFF;
+            --surface-muted: #F8FAFE;
+            --border-light: #E4E9F2;
+            --text-main: #0F2B3D;
+            --text-muted: #4B5565;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        /* scrollbar refinements */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #EFF3F8;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #B9C8E9;
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            transition: all 0.25s ease;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.12);
+            padding: 0.9rem 5%;
+        }
+
+        .navbar.scrolled {
+            padding: 0.6rem 5%;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1E3A8A, #2563EB);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        /* hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text .greeting {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+        }
+
+        .typed-text {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            min-height: 80px;
+            color: var(--primary-dark);
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -6px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-soft);
+            transform: translateY(-2px);
+        }
+
+        .btn-resume {
+            border: 1.5px solid var(--border-light);
+            color: var(--text-main);
+            background: white;
+        }
+
+        .btn-resume:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #F9FCFF;
+            transform: translateY(-2px);
+        }
+
+        .hero-image img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+            background: white;
+        }
+
+        /* sections common */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 1.4rem 1rem;
+            border-radius: 28px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s;
+            border: 1px solid var(--border-light);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-soft);
+            box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card i {
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .skill-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* work tabs (functional / organize) */
+        .work-tabs {
+            background: var(--surface);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-muted);
+            font-family: inherit;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeUp 0.35s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .project-card {
+            background: var(--surface-muted);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.25s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-soft);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-icon {
+            font-size: 2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+
+        .project-tags span {
+            background: var(--primary-soft);
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .project-links a {
+            margin-right: 1.2rem;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .achievements-grid,
+        .other-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .achievement-card,
+        .other-card,
+        .stat-card {
+            background: var(--surface);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card span {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        /* Testimonials refined */
+        .testimonial-section {
+            background: var(--surface);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 0 5% 3rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .testimonial-card {
+            flex: 0 0 100%;
+            background: #FDFEFF;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            margin-bottom: 1.4rem;
+            font-style: normal;
+        }
+
+        .testimonial-author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-soft);
+            object-fit: cover;
+        }
+
+        .testimonial-controls button {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 60px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .testimonial-controls button:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .testimonial-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .testimonial-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 20px;
+            background: #CBD5E1;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .testimonial-indicator.active {
+            width: 28px;
+            background: var(--primary);
+        }
+
+        /* About & contact */
+        .about-content {
+            background: var(--surface);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .info-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            background: var(--surface);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-info,
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .contact-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--surface-muted);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: var(--surface-muted);
+            border: 1px solid var(--border-light);
+            border-radius: 1rem;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.8rem;
+            border-top: 1px solid var(--border-light);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: 0.3s;
+                box-shadow: 6px 0 20px rgba(0, 0, 0, 0.05);
+                border-radius: 0 20px 20px 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .typed-text {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">NFA</div>
+        <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="greeting">✦ BUILDING MODERN SOLUTIONS</div>
+            <h1>Hi, I'm <span>Neil Francis</span><br>Arnaiz</h1>
+            <div class="typed-text" id="typedText"></div>
+            <p>Computer Programming student focused on accessible technology, clean interfaces, and impactful digital products.</p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> Projects</a>
+                <a href="#testimonials" class="btn btn-secondary"><i class="fas fa-comment"></i> Testimonials</a>
+                <a href="#" class="btn btn-resume" id="resumeMockBtn"><i class="fas fa-file-alt"></i> Resume</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://ui-avatars.com/api/?name=Neil+Francis+Arnaiz&background=2563EB&color=fff&bold=true&size=280&length=2&fontsize=0.30" alt="Neil Francis">
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate developer with a mission to craft inclusive, human-centered applications. Currently studying Computer Programming, I blend technical curiosity with empathy for end users.</p>
+                <p>I specialize in frontend ecosystems, PHP backends, and design systems. I strongly believe that clean code and consistent UI build trust and usability.</p>
+                <ul class="info-list">
+                    <li><i class="fas fa-map-marker-alt" style="color: #2563EB;"></i> Philippines</li>
+                    <li><i class="fas fa-graduation-cap" style="color: #2563EB;"></i> Computer Programming · CCD</li>
+                    <li><i class="fas fa-laptop-code" style="color: #2563EB;"></i> Web & Mobile Enthusiast</li>
+                    <li><i class="fas fa-universal-access" style="color: #2563EB;"></i> Accessibility advocate</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <div class="container">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><i class="fab fa-html5"></i><h3>HTML5</h3></div>
+            <div class="skill-card"><i class="fab fa-css3-alt"></i><h3>CSS3</h3></div>
+            <div class="skill-card"><i class="fab fa-js"></i><h3>JavaScript</h3></div>
+            <div class="skill-card"><i class="fab fa-php"></i><h3>PHP</h3></div>
+            <div class="skill-card"><i class="fas fa-database"></i><h3>MySQL</h3></div>
+            <div class="skill-card"><i class="fab fa-git-alt"></i><h3>Git</h3></div>
+            <div class="skill-card"><i class="fab fa-figma"></i><h3>Figma</h3></div>
+            <div class="skill-card"><i class="fab fa-bootstrap"></i><h3>Bootstrap</h3></div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects + Tabs (fully functional) -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">Portfolio Showcase</h2>
+        <div class="work-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="works">📁 Works</button>
+                <button class="tab-btn" data-tab="achievements">🏅 Achievements</button>
+                <button class="tab-btn" data-tab="other">📌 Insights</button>
+            </div>
+            <div class="tab-panels">
+                <div class="tab-panel active" id="works-panel">
+                    <div class="projects-grid">
+                        <div class="project-card"><div class="project-icon">🧠</div><h3>Braille Connect</h3><p>Accessibility mobile app with TTS, Braille translation, voice learning for visually impaired students.</p><div class="project-tags"><span>Flutter</span><span>Firebase</span><span>AI</span></div><div class="project-links"><a href="#"><i class="fab fa-github"></i> Code</a><a href="#"><i class="fas fa-external-link-alt"></i> Preview</a></div></div>
+                        <div class="project-card"><div class="project-icon">📚</div><h3>Study Hut</h3><p>Digital learning ecosystem for academic resources, quizzes, and collaborative notes.</p><div class="project-tags"><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div><div class="project-links"><a href="#"><i class="fab fa-github"></i> Repo</a></div></div>
+                        <div class="project-card"><div class="project-icon">🚐</div><h3>CCD Express</h3><p>Student transport prototype focused on campus mobility, designed in Figma with interactive flows.</p><div class="project-tags"><span>Figma</span><span>UI/UX</span><span>Prototype</span></div><div class="project-links"><a href="#"><i class="fab fa-figma"></i> Design</a></div></div>
+                    </div>
+                </div>
+                <div class="tab-panel" id="achievements-panel">
+                    <div class="achievements-grid">
+                        <div class="achievement-card"><div class="achievement-icon">🏆</div><h3>Dean's List (2024)</h3><p>Top academic standing in Computer Programming program.</p></div>
+                        <div class="achievement-card"><div class="achievement-icon">🎓</div><h3>Capstone Lead</h3><p>Led Braille Connect team to deliver inclusive tool.</p></div>
+                        <div class="achievement-card"><div class="achievement-icon">💡</div><h3>Accessibility Workshop</h3><p>Certified in digital accessibility & inclusive design.</p></div>
+                    </div>
+                </div>
+                <div class="tab-panel" id="other-panel">
+                    <div class="other-grid">
+                        <div class="other-card"><h3>Professional Growth</h3><p>Constantly learning modern frontend frameworks and backend architecture.</p></div>
+                        <div class="other-card"><h3>Dev Toolbox</h3><p>VS Code, Git, Firebase, Postman, Agile workflows, Figma.</p></div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card"><span>5+</span><h3>Projects</h3><p>Full cycle delivery</p></div>
+                        <div class="stat-card"><span>3</span><h3>Workshops</h3><p>Accessibility & design thinking</p></div>
+                        <div class="stat-card"><span>30+</span><h3>Mentoring</h3><p>Peer programming support</p></div>
+                        <div class="stat-card"><span>1K+</span><h3>Commits</h3><p>Clean & modular</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Slider (organized) -->
+<section id="testimonials" class="testimonial-section">
+    <div class="container" style="max-width:1200px; margin:0 auto;">
+        <div class="testimonial-header">
+            <div><h2 style="margin-bottom:0.25rem;">Kind words</h2><p>From mentors and peers</p></div>
+            <div class="testimonial-controls"><button id="testimonialPrev"><i class="fas fa-chevron-left"></i></button><button id="testimonialNext"><i class="fas fa-chevron-right"></i></button></div>
+        </div>
+        <div class="testimonial-slider"><div class="testimonial-track" id="testimonialTrack"><div class="testimonial-card"><p>“Neil's dedication to accessible design is exceptional. He delivered Braille Connect with empathy and technical precision, making the project impactful.”</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="mentor"><div><h3>Prof. Reyes</h3><span>ICT Faculty</span></div></div></div><div class="testimonial-card"><p>“Always proactive and collaborative, Neil brings fresh ideas and clean UI implementation. Great problem solver!”</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="peer"><div><h3>Jane Santos</h3><span>Capstone Partner</span></div></div></div><div class="testimonial-card"><p>“Professional portfolio, strong communication skills. Neil’s work ethic raised the bar for our team projects.”</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="coordinator"><div><h3>Mark Villanueva</h3><span>Project Lead</span></div></div></div></div><div class="testimonial-indicators" id="testimonialIndicators"></div></div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get in touch</h2>
+        <div class="contact-content">
+            <div class="contact-info"><h3>Let's collaborate</h3><p>Whether it's a development project or just a chat, I'll reply promptly.</p><ul class="contact-details"><li><i class="fas fa-envelope" style="color:#2563EB;"></i> neil.arnaiz@edu.ph</li><li><i class="fab fa-github"></i> github.com/neilfrancis</li><li><i class="fab fa-linkedin"></i> linkedin.com/in/neilarnaiz</li></ul><div class="social-links"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
+            <div class="contact-form"><form id="contactForm"><div class="form-group"><input type="text" placeholder="Full name" id="name" required></div><div class="form-group"><input type="email" placeholder="Email address" id="email" required></div><div class="form-group"><textarea placeholder="Tell me about your idea..." rows="4" id="message" required></textarea></div><button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send message</button></form></div>
+        </div>
+    </div>
+</section>
+<footer><p>© 2025 Neil Francis Arnaiz — built with clarity & purpose</p></footer>
+
+<script>
+    // typing animation
+    const roles = ["Computer Programming Student", "Web Developer", "Accessibility Designer", "Future Full-Stack Dev"];
+    let idx = 0, ch = 0, del = false;
+    const typedEl = document.getElementById('typedText');
+    function typeEffect() {
+        const current = roles[idx];
+        if(del) ch--;
+        else ch++;
+        typedEl.textContent = current.substring(0,ch);
+        if(!del && ch === current.length) { del = true; setTimeout(typeEffect, 1800); return; }
+        if(del && ch === 0) { del = false; idx = (idx+1)%roles.length; setTimeout(typeEffect, 300); return; }
+        setTimeout(typeEffect, del ? 60 : 90);
+    }
+    typeEffect();
+
+    // functional tabs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const panels = {
+        works: document.getElementById('works-panel'),
+        achievements: document.getElementById('achievements-panel'),
+        other: document.getElementById('other-panel')
+    };
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            Object.values(panels).forEach(p => p.classList.remove('active'));
+            if(tabId === 'works') panels.works.classList.add('active');
+            if(tabId === 'achievements') panels.achievements.classList.add('active');
+            if(tabId === 'other') panels.other.classList.add('active');
+        });
+    });
+
+    // testimonial slider
+    const track = document.getElementById('testimonialTrack');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const indicatorsDiv = document.getElementById('testimonialIndicators');
+    let currentTestimonial = 0;
+    function buildIndicators() { cards.forEach((_,i) => { let dot = document.createElement('span'); dot.classList.add('testimonial-indicator'); if(i===0) dot.classList.add('active'); dot.dataset.index = i; indicatorsDiv.appendChild(dot); }); }
+    function updateSlider() { track.style.transform = `translateX(-${currentTestimonial * 100}%)`; document.querySelectorAll('.testimonial-indicator').forEach((dot, i) => { dot.classList.toggle('active', i===currentTestimonial); }); }
+    document.getElementById('testimonialPrev')?.addEventListener('click',()=>{ currentTestimonial = (currentTestimonial-1+cards.length)%cards.length; updateSlider(); });
+    document.getElementById('testimonialNext')?.addEventListener('click',()=>{ currentTestimonial = (currentTestimonial+1)%cards.length; updateSlider(); });
+    buildIndicators(); updateSlider();
+    document.querySelectorAll('.testimonial-indicator').forEach(dot => { dot.addEventListener('click', (e)=> { currentTestimonial = parseInt(e.target.dataset.index); updateSlider(); }); });
+    setInterval(()=>{ currentTestimonial = (currentTestimonial+1)%cards.length; updateSlider(); }, 6500);
+
+    // navbar scroll + active highlight
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if(window.scrollY>50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
+        const sections = document.querySelectorAll('section');
+        let currentId = '';
+        sections.forEach(sec => { const rect = sec.getBoundingClientRect(); if(rect.top <= 150 && rect.bottom >= 100) currentId = sec.getAttribute('id'); });
+        document.querySelectorAll('.nav-links a').forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${currentId}`) link.classList.add('active'); });
+    });
+
+    // mobile menu
+    const menuBtn = document.getElementById('menuBtn'), navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click',()=> navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click',()=> navLinks.classList.remove('active')));
+
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if(target) target.scrollIntoView({ behavior:'smooth' }); }); });
+
+    // contact form
+    document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); const name = document.getElementById('name').value; if(name && document.getElementById('email').value && document.getElementById('message').value) { alert(`Thanks ${name}, I'll reach out soon!`); e.target.reset(); } else alert('Please fill in all fields.'); });
+    document.getElementById('resumeMockBtn')?.addEventListener('click', (e) => { e.preventDefault(); alert('Resume preview — contact me for detailed CV.'); });
+</script>
+</body>
+</html>

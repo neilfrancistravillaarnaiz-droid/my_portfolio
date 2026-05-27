@@ -1,0 +1,6 @@
+Changes made:
+- Added intro-line 'Hi! I am' before the main name.
+- Updated .hero-tag text to 'welcome to my portfolio'.
+- Improved font smoothing and responsive adjustments for hero layout and heading sizes.
+
+Verify by opening MyPortfolio.html in a browser.
