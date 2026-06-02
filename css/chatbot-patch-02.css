@@ -1,0 +1,36 @@
+#chatbotContainer.chat-force-hidden{
+    display:none !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+}
+#chatbotContainer.open{
+    display:flex !important;
+    opacity:1 !important;
+    pointer-events:auto !important;
+}
+#closeChat,
+#minimizeChatBtn,
+#clearChatBtn,
+#voiceToggleBtn{
+    pointer-events:auto !important;
+    cursor:pointer !important;
+    touch-action:manipulation !important;
+    position:relative;
+    z-index:50;
+}
+#chatbotHeader{
+    touch-action:none !important;
+}
+#chatToggle{
+    touch-action:none !important;
+}
+@media(max-width:560px){
+    #chatbotContainer.open{
+        width:calc(100vw - 20px) !important;
+        height:min(72dvh, 520px) !important;
+        left:10px !important;
+        right:auto !important;
+        bottom:auto !important;
+        max-height:calc(100dvh - 95px) !important;
+    }
+}

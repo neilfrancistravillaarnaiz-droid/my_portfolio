@@ -1,0 +1,41 @@
+#chatToggle.holo-3d-avatar-btn{ overflow:visible !important; transform-style:preserve-3d; }
+#chatToggle .avatar-3d-figure{ overflow:visible !important; transform-style:preserve-3d; transition:transform .28s cubic-bezier(.2,.9,.2,1.25), filter .28s ease; }
+#chatToggle .avatar-arm{ position:absolute; top:54%; width:28px; height:16px; border-radius:18px; background:linear-gradient(145deg, rgba(255,255,255,.72), rgba(69,100,74,.62) 45%, rgba(24,68,42,.78)); box-shadow:inset 5px 5px 14px rgba(255,255,255,.28), inset -8px -7px 15px rgba(24,68,42,.32), 0 10px 24px rgba(24,68,42,.20); transform-origin:center center; z-index:3; }
+#chatToggle .avatar-arm-left{ left:5px; transform:rotate(18deg) translateZ(-4px); }
+#chatToggle .avatar-arm-right{ right:5px; transform:rotate(-18deg) translateZ(-4px); }
+#chatToggle .avatar-hand{ position:absolute; top:50%; width:16px; height:16px; border-radius:50%; background:radial-gradient(circle at 35% 28%, rgba(255,255,255,.95), rgba(228,219,192,.8) 36%, rgba(69,100,74,.72)); transform:translateY(-50%); box-shadow:0 7px 16px rgba(24,68,42,.25), inset -3px -4px 8px rgba(24,68,42,.20); }
+#chatToggle .avatar-arm-left .avatar-hand{ left:-8px; }
+#chatToggle .avatar-arm-right .avatar-hand{ right:-8px; }
+#chatToggle:hover .avatar-arm-right, #chatToggle.gesture-wave .avatar-arm-right{ animation:robotWave .72s ease-in-out 2; }
+#chatToggle.gesture-wave .avatar-head{ animation:robotNod .72s ease-in-out 2; }
+#chatToggle.gesture-dance .avatar-3d-figure{ animation:robotDance .9s ease-in-out 2; }
+#chatToggle.gesture-dance .avatar-arm-left{ animation:robotLeftDance .45s ease-in-out 4; }
+#chatToggle.gesture-dance .avatar-arm-right{ animation:robotRightDance .45s ease-in-out 4; }
+#chatToggle.gesture-think .avatar-head{ animation:robotThink 1.1s ease-in-out infinite; }
+#chatToggle.gesture-think .avatar-eye{ animation:robotBlink 1.2s ease-in-out infinite; }
+#chatToggle.gesture-sleep .avatar-eye{ width:14px !important; height:3px !important; border-radius:6px !important; animation:none !important; }
+#chatToggle.gesture-sleep .avatar-3d-figure{ transform:translateY(4px) rotateZ(-4deg) scale(.96); filter:saturate(.75); }
+#chatToggle.gesture-happy .avatar-3d-figure{ animation:robotHappy .55s ease-in-out 2; }
+#chatToggle.gesture-listen .avatar-head{ animation:robotListen .9s ease-in-out infinite; }
+#chatToggle.gesture-listen .avatar-arm-left{ transform:rotate(48deg) translateZ(-4px); }
+#chatToggle.gesture-listen .avatar-arm-right{ transform:rotate(-48deg) translateZ(-4px); }
+#chatToggle.gesture-point .avatar-arm-right{ animation:robotPoint 1s ease-in-out 1; }
+#chatToggle.gesture-confused .avatar-head{ animation:robotConfused .75s ease-in-out 2; }
+#chatToggle .gesture-ripple{ position:absolute; inset:10%; border:1px solid rgba(255,255,255,.72); border-radius:50%; pointer-events:none; animation:gestureRipple .75s ease-out forwards; z-index:-1; }
+.chat-command-panel{ display:flex; flex-wrap:wrap; gap:8px; padding:10px 12px 0; border-top:1px solid rgba(69,100,74,.12); background:rgba(243,237,227,.72); }
+.chat-command-panel button{ border:1px solid rgba(69,100,74,.18); background:rgba(255,255,255,.65); color:var(--primary); border-radius:999px; padding:7px 10px; font-size:.72rem; font-weight:800; cursor:pointer; transition:transform .2s ease, background .2s ease, box-shadow .2s ease; touch-action:manipulation; }
+.chat-command-panel button:hover{ transform:translateY(-2px); background:#fff; box-shadow:0 8px 18px rgba(24,68,42,.12); }
+.command-chip-note{ font-size:.72rem; color:var(--muted); padding:0 12px 8px; background:rgba(243,237,227,.72); }
+@keyframes robotWave{ 0%,100%{ transform:rotate(-18deg) translateZ(-4px); } 25%{ transform:rotate(-92deg) translate(0,-8px) translateZ(12px); } 50%{ transform:rotate(-48deg) translate(1px,-6px) translateZ(12px); } 75%{ transform:rotate(-98deg) translate(-1px,-8px) translateZ(12px); } }
+@keyframes robotNod{ 0%,100%{ transform:translateY(0) rotateX(0); } 50%{ transform:translateY(2px) rotateX(10deg); } }
+@keyframes robotDance{ 0%,100%{ transform:translateY(0) rotateZ(0) scale(1); } 25%{ transform:translateY(-7px) rotateZ(-8deg) scale(1.04); } 50%{ transform:translateY(2px) rotateZ(8deg) scale(.99); } 75%{ transform:translateY(-5px) rotateZ(-5deg) scale(1.03); } }
+@keyframes robotLeftDance{ 0%,100%{ transform:rotate(18deg) translateZ(-4px); } 50%{ transform:rotate(70deg) translate(-2px,-6px) translateZ(8px); } }
+@keyframes robotRightDance{ 0%,100%{ transform:rotate(-18deg) translateZ(-4px); } 50%{ transform:rotate(-70deg) translate(2px,-6px) translateZ(8px); } }
+@keyframes robotThink{ 0%,100%{ transform:rotateZ(0); } 50%{ transform:rotateZ(8deg) translateY(1px); } }
+@keyframes robotBlink{ 0%,82%,100%{ transform:scaleY(1); } 90%{ transform:scaleY(.15); } }
+@keyframes robotHappy{ 0%,100%{ transform:translateY(0) scale(1); } 50%{ transform:translateY(-8px) scale(1.05); } }
+@keyframes robotListen{ 0%,100%{ transform:rotateZ(-4deg); } 50%{ transform:rotateZ(4deg); } }
+@keyframes robotPoint{ 0%,100%{ transform:rotate(-18deg) translateZ(-4px); } 45%,70%{ transform:rotate(-5deg) translateX(14px) translateZ(12px) scaleX(1.25); } }
+@keyframes robotConfused{ 0%,100%{ transform:rotateZ(0); } 25%{ transform:rotateZ(-10deg); } 75%{ transform:rotateZ(10deg); } }
+@keyframes gestureRipple{ from{ opacity:.8; transform:scale(.65); } to{ opacity:0; transform:scale(1.8); } }
+@media(max-width:560px){ .chat-command-panel{ gap:6px; padding:8px 10px 0; } .chat-command-panel button{ padding:7px 9px; font-size:.69rem; } #chatToggle .avatar-arm{ width:24px; height:14px; } #chatToggle .avatar-hand{ width:14px; height:14px; } }

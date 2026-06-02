@@ -1,0 +1,249 @@
+/* Global responsive safeguards */
+html, body{
+    max-width:100%;
+    overflow-x:hidden;
+}
+img, video, canvas, svg{
+    max-width:100%;
+}
+.container{
+    width:min(100%, 1200px);
+}
+
+/* Better responsive grids */
+@media(max-width:1024px){
+    .hero-content{
+        grid-template-columns:1fr !important;
+        justify-items:center !important;
+        text-align:center !important;
+        gap:34px !important;
+    }
+    .hero-text{
+        align-items:center !important;
+        margin:0 auto !important;
+        max-width:760px !important;
+    }
+    .hero-text p{
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
+    .hero-image{
+        min-height:auto !important;
+        width:100% !important;
+        margin-left:0 !important;
+        padding-left:0 !important;
+        justify-content:center !important;
+    }
+    .image-orbit{
+        left:50% !important;
+        top:50% !important;
+        transform:translate(-50%,-50%) !important;
+        width:min(78vw,460px) !important;
+        height:min(78vw,460px) !important;
+    }
+    .profile-photo{
+        width:min(72vw,430px) !important;
+    }
+    .services-grid,
+    .skills-compact-grid,
+    .projects-grid,
+    .testimonial-grid,
+    .about-info{
+        grid-template-columns:repeat(auto-fit,minmax(240px,1fr)) !important;
+    }
+}
+
+@media(max-width:768px){
+    .container{
+        padding-inline:16px !important;
+    }
+    section{
+        padding:42px 0 !important;
+    }
+    .hero{
+        padding-top:96px !important;
+        min-height:auto !important;
+    }
+    .section-title{
+        font-size:clamp(1.75rem, 8vw, 2.25rem) !important;
+        margin-bottom:26px !important;
+    }
+    .about-card,
+    .services-grid,
+    .testimonials-container,
+    .contact-content,
+    .review-form-card{
+        padding:22px !important;
+        border-radius:22px !important;
+    }
+    .service-card,
+    .project-card,
+    .skill-category-card,
+    .testimonial-item,
+    .contact-info,
+    .contact-form{
+        padding:22px !important;
+        border-radius:20px !important;
+    }
+    .btn-group{
+        justify-content:center !important;
+    }
+    .btn{
+        width:100%;
+        max-width:310px;
+        justify-content:center;
+    }
+    .toggle-container{
+        width:100% !important;
+        max-width:360px !important;
+        overflow:hidden !important;
+    }
+    .toggle-btn{
+        flex:1 !important;
+        padding:11px 14px !important;
+        font-size:.86rem !important;
+    }
+    #memoryCanvasContainer{
+        height:420px !important;
+        border-radius:24px !important;
+    }
+    .memory-controls-ui{
+        right:50% !important;
+        transform:translateX(50%) !important;
+        bottom:12px !important;
+    }
+}
+
+@media(max-width:520px){
+    .container{
+        padding-inline:12px !important;
+    }
+    .hero-text h1{
+        font-size:clamp(2.35rem, 13vw, 3.3rem) !important;
+    }
+    .typed-text{
+        min-height:42px !important;
+        font-size:1.16rem !important;
+    }
+    .intro-line,
+    .hero-text p{
+        font-size:.98rem !important;
+    }
+    .profile-photo{
+        width:min(84vw,310px) !important;
+    }
+    .services-grid,
+    .skills-compact-grid,
+    .projects-grid,
+    .testimonial-grid,
+    .about-info{
+        grid-template-columns:1fr !important;
+        gap:16px !important;
+    }
+    .contact-content{
+        grid-template-columns:1fr !important;
+    }
+    .review-form-grid{
+        grid-template-columns:1fr !important;
+    }
+    #memoryCanvasContainer{
+        height:340px !important;
+    }
+}
+
+/* Chatbot responsiveness without changing avatar layout */
+#chatToggle{
+    touch-action:none !important;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
+    will-change:transform, left, top;
+}
+#chatbotContainer{
+    max-width:calc(100vw - 24px) !important;
+    max-height:calc(100dvh - 24px) !important;
+    will-change:left, top, transform;
+}
+#chatbotHeader{
+    touch-action:none !important;
+}
+#closeChat,
+#sendChatBtn,
+.chat-input-area button{
+    touch-action:manipulation;
+}
+.chat-input-area{
+    align-items:center;
+}
+.chat-input-area input{
+    min-width:0;
+}
+
+@media(max-width:900px){
+    #chatbotContainer{
+        width:min(360px, calc(100vw - 28px)) !important;
+        height:min(500px, calc(100dvh - 110px)) !important;
+        right:14px !important;
+        bottom:92px !important;
+        border-radius:24px !important;
+    }
+}
+
+@media(max-width:560px){
+    #chatToggle{
+        right:12px !important;
+        bottom:16px !important;
+        transform-origin:center center;
+    }
+    #chatbotContainer{
+        width:calc(100vw - 20px) !important;
+        height:min(72dvh, 520px) !important;
+        left:10px !important;
+        right:auto !important;
+        bottom:86px !important;
+        top:auto !important;
+        border-radius:22px !important;
+    }
+    #chatbotContainer.avatar-positioned{
+        width:calc(100vw - 20px) !important;
+    }
+    .chatbot-header{
+        padding:13px 15px !important;
+    }
+    .chatbot-header h4{
+        font-size:.92rem !important;
+    }
+    .chat-messages{
+        padding:12px !important;
+        gap:9px !important;
+    }
+    .message{
+        max-width:92% !important;
+        font-size:.82rem !important;
+    }
+    .chat-input-area{
+        padding:10px !important;
+        gap:8px !important;
+    }
+    .chat-input-area input{
+        padding:11px 13px !important;
+        font-size:16px !important;
+    }
+    .chat-input-area button{
+        width:42px !important;
+        height:42px !important;
+        flex:0 0 42px !important;
+    }
+}
+
+@media(max-width:380px){
+    #chatbotContainer{
+        height:min(70dvh, 500px) !important;
+        bottom:80px !important;
+    }
+    .chatbot-header h4{
+        max-width:210px;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+}

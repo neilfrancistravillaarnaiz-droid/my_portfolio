@@ -1,0 +1,176 @@
+/* Final mouth alignment: keeps the mouth below the eyes in every emotion state */
+#chatToggle .avatar-face{
+    top:10px !important;
+    height:23px !important;
+    overflow:visible !important;
+}
+#chatToggle .avatar-eye{
+    top:5px !important;
+}
+#chatToggle .avatar-mouth{
+    left:50% !important;
+    top:20px !important;
+    bottom:auto !important;
+    transform:translateX(-50%) !important;
+    z-index:4 !important;
+}
+#chatToggle.neilo-emotion-happy .avatar-mouth,
+#chatToggle.pet-happy .avatar-mouth{
+    top:19px !important;
+    bottom:auto !important;
+    transform:translateX(-50%) !important;
+    width:18px !important;
+    height:8px !important;
+    border-radius:0 0 18px 18px !important;
+    border-bottom:3px solid #F3EDE3 !important;
+    background:transparent !important;
+}
+#chatToggle.neilo-emotion-sad .avatar-mouth{
+    top:20px !important;
+    bottom:auto !important;
+    transform:translateX(-50%) rotate(180deg) !important;
+    width:17px !important;
+    height:8px !important;
+    border-radius:0 0 18px 18px !important;
+    border-bottom:3px solid #F3EDE3 !important;
+    background:transparent !important;
+}
+#chatToggle.neilo-emotion-hungry .avatar-mouth{
+    top:19px !important;
+    bottom:auto !important;
+    transform:translateX(-50%) !important;
+    width:11px !important;
+    height:11px !important;
+    border-radius:50% !important;
+    background:#F3EDE3 !important;
+}
+#chatToggle.neilo-emotion-thirsty .avatar-core-light{
+    animation:neiloWaterPulse .8s ease-in-out infinite !important;
+    background:radial-gradient(circle,#a8dadc,#e8ffff 48%,transparent 72%) !important;
+}
+#chatToggle.neilo-emotion-thirsty .avatar-mouth{
+    top:19px !important;
+    bottom:auto !important;
+    transform:translateX(-50%) !important;
+    width:7px !important;
+    height:12px !important;
+    border-radius:50% !important;
+    background:#F3EDE3 !important;
+}
+#chatToggle.neilo-emotion-sleepy .avatar-mouth,
+#chatToggle.neilo-sleep-locked .avatar-mouth{
+    top:15px !important;
+    bottom:auto !important;
+    transform:translateX(-50%) !important;
+}
+#chatToggle.neilo-eating .avatar-mouth{
+    animation:neiloChew .2s ease-in-out infinite alternate !important;
+}
+#chatToggle.neilo-drinking .avatar-core-light{
+    animation:neiloSipGlow .35s ease-in-out infinite alternate !important;
+}
+.neilo-care-tray{
+    position:fixed;
+    right:110px;
+    bottom:28px;
+    z-index:1003;
+    display:flex;
+    gap:10px;
+    align-items:center;
+    padding:9px 11px;
+    border-radius:999px;
+    background:rgba(243,237,227,.88);
+    border:1px solid rgba(228,219,192,.85);
+    box-shadow:0 14px 35px rgba(24,68,42,.18);
+    backdrop-filter:blur(12px);
+}
+.neilo-care-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(24,68,42,.18);
+    background:linear-gradient(145deg, rgba(255,255,255,.92), rgba(228,219,192,.72));
+    cursor:grab;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.25rem;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 8px 18px rgba(24,68,42,.16);
+    transition:transform .18s ease, box-shadow .18s ease;
+    touch-action:none;
+}
+.neilo-care-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 12px 24px rgba(24,68,42,.24);
+}
+.neilo-care-btn:active{ cursor:grabbing; }
+.neilo-care-ghost{
+    position:fixed;
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    z-index:10050;
+    pointer-events:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.45rem;
+    background:rgba(243,237,227,.95);
+    border:1px solid rgba(228,219,192,.9);
+    box-shadow:0 16px 30px rgba(24,68,42,.28);
+    transform:translate(-50%,-50%) scale(1.04);
+}
+#chatToggle.neilo-feed-target::before{
+    box-shadow:0 0 0 10px rgba(228,219,192,.25),0 0 30px rgba(228,219,192,.85) !important;
+}
+.neilo-care-label{
+    color:var(--primary);
+    font-weight:900;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:.75rem;
+    white-space:nowrap;
+}
+@keyframes neiloWaterPulse{
+    0%,100%{ transform:scale(.84); opacity:.58; filter:hue-rotate(0deg); }
+    50%{ transform:scale(1.23); opacity:1; filter:hue-rotate(18deg); }
+}
+@keyframes neiloChew{
+    from{ transform:translateX(-50%) scaleX(.8) scaleY(.72); }
+    to{ transform:translateX(-50%) scaleX(1.18) scaleY(1.05); }
+}
+
+/* Hide food and water by default; show only when Neilo needs care */
+.neilo-care-tray{
+    opacity:0 !important;
+    transform:translateY(18px) scale(.92) !important;
+    pointer-events:none !important;
+    visibility:hidden !important;
+}
+.neilo-care-tray.neilo-care-visible{
+    opacity:1 !important;
+    transform:translateY(0) scale(1) !important;
+    pointer-events:auto !important;
+    visibility:visible !important;
+    animation:neiloCarePop .45s cubic-bezier(.2,.9,.25,1.25) both;
+}
+@keyframes neiloCarePop{
+    0%{ transform:translateY(22px) scale(.72); filter:blur(2px); }
+    100%{ transform:translateY(0) scale(1); filter:blur(0); }
+}
+#chatToggle.neilo-needs-care{
+    box-shadow:0 0 0 5px rgba(228,219,192,.36), 0 0 34px rgba(212,163,115,.42) !important;
+}
+@keyframes neiloSipGlow{
+    from{ filter:brightness(1); transform:translateX(-50%) translateZ(16px) scale(.92); }
+    to{ filter:brightness(1.45); transform:translateX(-50%) translateZ(16px) scale(1.25); }
+}
+@media(max-width:700px){
+    .neilo-care-tray{
+        right:92px;
+        bottom:18px;
+        padding:7px 8px;
+        gap:7px;
+    }
+    .neilo-care-label{ display:none; }
+    .neilo-care-btn{ width:38px; height:38px; font-size:1.1rem; }
+}

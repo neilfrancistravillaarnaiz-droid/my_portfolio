@@ -1,0 +1,75 @@
+/* Revert mouth placement to the earlier/original avatar layout.
+   This override only affects mouth position, not food/water, sleep, or gestures. */
+#chatToggle .avatar-face{
+    top:10px !important;
+    height:23px !important;
+    overflow:visible !important;
+}
+#chatToggle .avatar-mouth{
+    position:absolute !important;
+    left:50% !important;
+    top:auto !important;
+    bottom:4px !important;
+    width:10px !important;
+    height:2px !important;
+    border-radius:999px !important;
+    background:rgba(243,237,227,.88) !important;
+    border:0 !important;
+    border-bottom:0 !important;
+    transform:translateX(-50%) !important;
+    transform-origin:center center !important;
+    z-index:4 !important;
+}
+#chatToggle.neilo-emotion-happy .avatar-mouth,
+#chatToggle.pet-happy .avatar-mouth{
+    top:auto !important;
+    bottom:4px !important;
+    width:17px !important;
+    height:9px !important;
+    border-radius:0 0 18px 18px !important;
+    border-bottom:3px solid #F3EDE3 !important;
+    background:transparent !important;
+    transform:translateX(-50%) !important;
+}
+#chatToggle.neilo-emotion-sad .avatar-mouth{
+    top:auto !important;
+    bottom:4px !important;
+    width:17px !important;
+    height:8px !important;
+    border-radius:18px 18px 0 0 !important;
+    border-top:3px solid #F3EDE3 !important;
+    border-bottom:0 !important;
+    background:transparent !important;
+    transform:translateX(-50%) !important;
+}
+#chatToggle.neilo-emotion-hungry .avatar-mouth{
+    top:auto !important;
+    bottom:4px !important;
+    width:10px !important;
+    height:10px !important;
+    border-radius:50% !important;
+    background:#F3EDE3 !important;
+    border:0 !important;
+    transform:translateX(-50%) !important;
+}
+#chatToggle.neilo-emotion-thirsty .avatar-mouth{
+    top:auto !important;
+    bottom:4px !important;
+    width:7px !important;
+    height:11px !important;
+    border-radius:50% !important;
+    background:#F3EDE3 !important;
+    border:0 !important;
+    transform:translateX(-50%) !important;
+}
+#chatToggle.neilo-emotion-sleepy .avatar-mouth,
+#chatToggle.neilo-sleep-locked .avatar-mouth{
+    top:auto !important;
+    bottom:4px !important;
+    width:8px !important;
+    height:8px !important;
+    border-radius:50% !important;
+    background:rgba(243,237,227,.88) !important;
+    border:0 !important;
+    transform:translateX(-50%) !important;
+}

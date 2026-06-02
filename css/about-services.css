@@ -1,0 +1,79 @@
+/* ABOUT, SERVICES, SKILLS, JOURNEY */
+.about-card{
+    background: rgba(243, 237, 227, 0.85);
+    backdrop-filter: blur(12px);
+    padding:36px;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+}
+.about-card p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:24px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.about-card p:hover {
+    color: var(--text);
+    transform: translateX(3px);
+}
+.about-info{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+}
+.info-item{
+    background: rgba(228, 219, 192, 0.5);
+    backdrop-filter: blur(4px);
+    border-radius:18px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--primary);
+    font-weight:700;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.info-item:hover {
+    background: rgba(228, 219, 192, 0.8);
+    transform: translateX(5px);
+    color: var(--secondary);
+}
+.services-grid{
+    background: rgba(243, 237, 227, 0.75);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    border-radius: var(--radius);
+}
+.service-card{
+    background: rgba(243, 237, 227, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    padding: 32px 24px;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid var(--accent);
+    cursor: pointer;
+}
+.service-card:hover{
+    transform: translateY(-12px);
+    background: rgba(243, 237, 227, 0.98);
+    border-color: var(--primary);
+}
+.service-icon{
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, rgba(24,68,42,0.15), rgba(69,100,74,0.1));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: var(--primary);
+}

@@ -1,0 +1,40 @@
+/* Extra avatar gestures: jump, spin, clap, sing, bow, cheer, reset */
+#chatToggle.gesture-jump .avatar-3d-figure{ animation:avatarJump3D .72s cubic-bezier(.2,.9,.25,1.35) 2 !important; }
+#chatToggle.gesture-spin .avatar-3d-figure{ animation:avatarSpin3D 1.05s cubic-bezier(.2,.9,.25,1.05) 1 !important; }
+#chatToggle.gesture-clap .avatar-arm-left{ animation:avatarClapLeft .34s ease-in-out 6 !important; }
+#chatToggle.gesture-clap .avatar-arm-right{ animation:avatarClapRight .34s ease-in-out 6 !important; }
+#chatToggle.gesture-clap .avatar-3d-figure{ animation:avatarClapBody .68s ease-in-out 3 !important; }
+#chatToggle.gesture-sing .avatar-mouth{ animation:avatarSingMouth .18s ease-in-out infinite alternate !important; }
+#chatToggle.gesture-sing .avatar-core-light{ animation:avatarSingGlow .55s ease-in-out infinite !important; }
+#chatToggle.gesture-sing .avatar-holo-ring{ animation:avatarMusicRing 1s linear infinite !important; }
+#chatToggle.gesture-bow .avatar-3d-figure{ animation:avatarBow3D 1.1s ease-in-out 1 !important; }
+#chatToggle.gesture-cheer .avatar-arm-left{ animation:avatarCheerLeft .55s ease-in-out 4 !important; }
+#chatToggle.gesture-cheer .avatar-arm-right{ animation:avatarCheerRight .55s ease-in-out 4 !important; }
+#chatToggle.gesture-cheer .avatar-3d-figure{ animation:avatarCheerBody .55s ease-in-out 4 !important; }
+#chatToggle.gesture-shake .avatar-3d-figure{ animation:avatarShake3D .5s ease-in-out 3 !important; }
+#chatToggle.gesture-nod .avatar-head, #chatToggle.gesture-nod .avatar-face{ animation:avatarNod .55s ease-in-out 3 !important; }
+#chatToggle.gesture-scan .avatar-eye{ animation:avatarScanEyes .38s linear 6 !important; }
+#chatToggle.gesture-powerup .avatar-core-light{ animation:avatarPowerUpGlow .22s ease-in-out 8 alternate !important; }
+#chatToggle.gesture-wiggle .avatar-3d-figure{ animation:avatarWiggleBot .65s ease-in-out 4 !important; }
+@keyframes avatarShake3D{ 0%,100%{ transform:translateX(0) rotateY(-22deg); } 25%{ transform:translateX(-7px) rotateY(-34deg); } 75%{ transform:translateX(7px) rotateY(-10deg); } }
+@keyframes avatarNod{ 0%,100%{ transform:translateY(0) scaleY(1); } 50%{ transform:translateY(4px) scaleY(.92); } }
+@keyframes avatarScanEyes{ 0%,100%{ box-shadow:0 0 8px #F3EDE3; transform:translateX(0); } 50%{ box-shadow:0 0 18px #a8dadc; transform:translateX(3px); } }
+@keyframes avatarPowerUpGlow{ from{ filter:brightness(1); transform:translateX(-50%) translateZ(16px) scale(1); } to{ filter:brightness(1.8); transform:translateX(-50%) translateZ(16px) scale(1.65); } }
+@keyframes avatarWiggleBot{ 0%,100%{ transform:rotateZ(0) translateY(0); } 25%{ transform:rotateZ(-7deg) translateY(-4px); } 75%{ transform:rotateZ(7deg) translateY(-4px); } }
+
+#chatToggle .music-note-float{ position:absolute; left:50%; top:10%; transform:translateX(-50%); pointer-events:none; font-size:1.05rem; filter:drop-shadow(0 8px 12px rgba(24,68,42,.2)); animation:musicNoteFloat 1.05s ease-out forwards; z-index:30; }
+#chatToggle .clap-spark{ position:absolute; left:50%; top:52%; width:7px; height:7px; border-radius:50%; background:#F3EDE3; box-shadow:0 0 12px rgba(228,219,192,.9); pointer-events:none; animation:clapSpark .65s ease-out forwards; z-index:30; }
+@keyframes avatarJump3D{ 0%,100%{ transform:translateY(0) rotateX(10deg) rotateY(-22deg) scale(1); } 35%{ transform:translateY(-28px) rotateX(22deg) rotateY(18deg) scale(1.08); } 70%{ transform:translateY(5px) rotateX(7deg) rotateY(-16deg) scale(.98); } }
+@keyframes avatarSpin3D{ 0%{ transform:rotateX(10deg) rotateY(-22deg) translateZ(28px) scale(1); } 50%{ transform:rotateX(18deg) rotateY(190deg) translateZ(38px) scale(1.08); } 100%{ transform:rotateX(10deg) rotateY(338deg) translateZ(28px) scale(1); } }
+@keyframes avatarClapLeft{ 0%,100%{ transform:rotate(18deg) translateZ(-4px); } 50%{ transform:rotate(8deg) translateX(20px) translateZ(18px); } }
+@keyframes avatarClapRight{ 0%,100%{ transform:rotate(-18deg) translateZ(-4px); } 50%{ transform:rotate(-8deg) translateX(-20px) translateZ(18px); } }
+@keyframes avatarClapBody{ 0%,100%{ transform:translateY(0) scale(1); } 50%{ transform:translateY(-4px) scale(1.035); } }
+@keyframes avatarSingMouth{ from{ width:9px; height:5px; border-radius:50%; } to{ width:17px; height:12px; border-radius:0 0 16px 16px; } }
+@keyframes avatarSingGlow{ 0%,100%{ filter:brightness(1); transform:translateX(-50%) translateZ(16px) scale(1); } 50%{ filter:brightness(1.45); transform:translateX(-50%) translateZ(16px) scale(1.45); } }
+@keyframes avatarMusicRing{ to{ transform:rotateX(70deg) rotateZ(360deg); } }
+@keyframes avatarBow3D{ 0%,100%{ transform:rotateX(10deg) rotateY(-22deg) translateZ(28px); } 45%,70%{ transform:translateY(7px) rotateX(44deg) rotateY(-18deg) translateZ(18px) scale(.96); } }
+@keyframes avatarCheerLeft{ 0%,100%{ transform:rotate(18deg) translateZ(-4px); } 50%{ transform:rotate(112deg) translate(-5px,-16px) translateZ(18px); } }
+@keyframes avatarCheerRight{ 0%,100%{ transform:rotate(-18deg) translateZ(-4px); } 50%{ transform:rotate(-112deg) translate(5px,-16px) translateZ(18px); } }
+@keyframes avatarCheerBody{ 0%,100%{ transform:translateY(0) rotateZ(0) scale(1); } 50%{ transform:translateY(-8px) rotateZ(4deg) scale(1.05); } }
+@keyframes musicNoteFloat{ from{ opacity:1; transform:translate(-50%,0) scale(.75) rotate(-8deg); } to{ opacity:0; transform:translate(calc(-50% + var(--x, 0px)),-58px) scale(1.35) rotate(18deg); } }
+@keyframes clapSpark{ from{ opacity:1; transform:translate(-50%,-50%) scale(.6); } to{ opacity:0; transform:translate(calc(-50% + var(--x,0px)), calc(-50% + var(--y,0px))) scale(1.6); } }

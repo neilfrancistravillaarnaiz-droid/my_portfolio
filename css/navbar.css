@@ -1,0 +1,94 @@
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+    padding:12px 5%;
+    background:rgba(243,237,227,0.92);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(228,219,192,0.6);
+}
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+.logo-wrapper{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+}
+.initials-logo{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--primary),var(--secondary));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#F3EDE3;
+    font-weight:800;
+    font-size:1.2rem;
+}
+.logo-text .name-logo{
+    font-weight:800;
+    font-size:0.9rem;
+    line-height:1.2;
+}
+.logo-text .role-logo{
+    font-size:0.7rem;
+    color:var(--muted);
+}
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:0.85rem;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:40px;
+    transition:var(--transition);
+    position:relative;
+}
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:0;
+    height:3px;
+    border-radius:20px;
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+    transition:var(--transition);
+    transform: translateX(-50%);
+}
+.nav-links a:hover::after, .nav-links a.active::after{
+    width:70%;
+}
+.nav-links a:hover, .nav-links a.active{
+    color:var(--primary);
+    background: rgba(24,68,42,0.08);
+}
+.menu-btn{
+    display:none;
+    font-size:1.4rem;
+    cursor:pointer;
+    color:var(--primary);
+}
+.booking-nav-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #F3EDE3 !important;
+    padding: 6px 14px !important;
+}
+.booking-nav-btn::after { display: none !important; }

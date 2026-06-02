@@ -1,0 +1,122 @@
+#chatToggle.neilo-sleep-locked{
+    filter:saturate(.65) brightness(.82) !important;
+}
+#chatToggle.neilo-sleep-locked .avatar-holo-ring{
+    animation-play-state:paused !important;
+    opacity:.28 !important;
+}
+#chatToggle.neilo-sleep-locked .avatar-holo-shadow{
+    opacity:.42 !important;
+    transform:scale(.82) !important;
+}
+#chatToggle.neilo-sleep-locked .avatar-3d-figure{
+    animation:neiloDeepSleep 3.4s ease-in-out infinite !important;
+    transform-origin:center bottom !important;
+}
+#chatToggle.neilo-sleep-locked .avatar-eye{
+    width:14px !important;
+    height:3px !important;
+    border-radius:999px !important;
+    background:#183b25 !important;
+    box-shadow:none !important;
+    animation:none !important;
+}
+#chatToggle.neilo-sleep-locked .avatar-mouth{
+    left:50% !important;
+    bottom:3px !important;
+    width:14px !important;
+    height:6px !important;
+    border-radius:0 0 16px 16px !important;
+    transform:translateX(-50%) translateY(5px) !important;
+}
+#chatToggle.neilo-sleep-locked::after{
+    content:"Zzz";
+    position:absolute;
+    top:-18px;
+    right:-14px;
+    padding:5px 9px;
+    border-radius:999px;
+    background:rgba(243,237,227,.95);
+    color:var(--primary);
+    font-size:.78rem;
+    font-weight:900;
+    box-shadow:0 8px 18px rgba(24,68,42,.18);
+    animation:neiloZzz 1.8s ease-in-out infinite;
+}
+#chatToggle.neilo-emotion-happy .avatar-mouth{
+    left:50% !important;
+    bottom:3px !important;
+    width:18px !important;
+    height:9px !important;
+    border-radius:0 0 18px 18px !important;
+    transform:translateX(-50%) translateY(4px) !important;
+}
+#chatToggle.neilo-emotion-sad .avatar-mouth{
+    left:50% !important;
+    bottom:3px !important;
+    width:18px !important;
+    height:9px !important;
+    border-radius:18px 18px 0 0 !important;
+    transform:translateX(-50%) translateY(10px) !important;
+}
+#chatToggle.neilo-emotion-sad .avatar-eye{
+    transform:rotate(12deg) scaleY(.75) !important;
+}
+#chatToggle.neilo-emotion-hungry .avatar-core-light{
+    animation:neiloHungryPulse .8s ease-in-out infinite !important;
+    background:radial-gradient(circle,#d4a373,#ffefbf 48%,transparent 72%) !important;
+}
+#chatToggle.neilo-emotion-hungry .avatar-mouth{
+    left:50% !important;
+    bottom:3px !important;
+    width:10px !important;
+    height:10px !important;
+    border-radius:50% !important;
+    transform:translateX(-50%) translateY(7px) !important;
+}
+#chatToggle.neilo-emotion-sleepy .avatar-eye{
+    width:13px !important;
+    height:4px !important;
+    border-radius:999px !important;
+}
+#chatToggle.neilo-emotion-sleepy .avatar-3d-figure{
+    animation:neiloDrowsy 1.8s ease-in-out infinite !important;
+}
+#chatToggle.neilo-emotion-sleepy .avatar-mouth{
+    left:50% !important;
+    bottom:3px !important;
+    transform:translateX(-50%) !important;
+}
+#chatToggle .avatar-mouth{
+    left:50% !important;
+    transform-origin:center center !important;
+}
+.neilo-status-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-left:6px;
+    padding:4px 9px;
+    border-radius:999px;
+    background:rgba(243,237,227,.22);
+    border:1px solid rgba(243,237,227,.28);
+    color:#F3EDE3;
+    font-size:.72rem;
+    font-weight:900;
+}
+@keyframes neiloDeepSleep{
+    0%,100%{ transform:translateY(6px) rotateZ(-7deg) scale(.94); }
+    50%{ transform:translateY(9px) rotateZ(-9deg) scale(.92); }
+}
+@keyframes neiloZzz{
+    0%,100%{ transform:translateY(0) scale(.92); opacity:.56; }
+    50%{ transform:translateY(-8px) scale(1.08); opacity:1; }
+}
+@keyframes neiloHungryPulse{
+    0%,100%{ transform:scale(.82); opacity:.55; }
+    50%{ transform:scale(1.22); opacity:1; }
+}
+@keyframes neiloDrowsy{
+    0%,100%{ transform:translateY(2px) rotateZ(-3deg); }
+    50%{ transform:translateY(7px) rotateZ(3deg); }
+}
